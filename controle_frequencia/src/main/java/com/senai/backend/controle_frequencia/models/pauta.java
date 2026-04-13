@@ -27,13 +27,13 @@ public class pauta {
 
     @OneToMany
     @JoinColumn (name  = "id_pauta")
-    private List<usuario> usuario;
+    private List<Usuario> usuario;
 
 
     public pauta() {
     }
 
-    public pauta(Integer id, String turma, List<com.senai.backend.controle_frequencia.models.usuario> usuario) {
+    public pauta(Integer id, String turma, List<com.senai.backend.controle_frequencia.models.Usuario> usuario) {
         this.id = id;
         this.turma = turma;
         this.usuario = usuario;
@@ -55,11 +55,11 @@ public class pauta {
         this.turma = turma;
     }
 
-    public List<usuario> getUsuario() {
+    public List<Usuario> getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(List<usuario> usuario) {
+    public void setUsuario(List<Usuario> usuario) {
         this.usuario = usuario;
     }
     
