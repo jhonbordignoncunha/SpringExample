@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.senai.backend.controle_frequencia.models.Usuario;
-import com.senai.backend.controle_frequencia.Repositories.Usuariorepositories;
+import com.senai.backend.controle_frequencia.repositories.Usuariorepositories;
 
 @Service
 public class usuarioservice {
