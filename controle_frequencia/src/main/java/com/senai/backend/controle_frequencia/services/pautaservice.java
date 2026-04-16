@@ -47,7 +47,7 @@ public class pautaservice {
         if (pautarecuperada != null)
             pautarecuperada.setId(id);
             if (pauta.getTurma() != null) 
-            pautarecuperada.setTurma(pauta.getTurma()) 
+            pautarecuperada.setTurma(pauta.getTurma())
         }return pautaRepositories.sav(pautaRecuperada);
 
 }return null;
