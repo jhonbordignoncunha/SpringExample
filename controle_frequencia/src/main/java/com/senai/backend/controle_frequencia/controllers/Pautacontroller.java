@@ -1,7 +1,8 @@
 package com.senai.backend.controle_frequencia.controllers;
 
-import com.senai.backend.controle_frequencia.ControleFrequenciaApplication;
 import com.senai.backend.controle_frequencia.models.pauta;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,22 +19,17 @@ import com.senai.backend.controle_frequencia.services.pautaservice;
 @RequestMapping("/pauta")
 public class Pautacontroller {
 
-    private final ControleFrequenciaApplication controleFrequenciaApplication;
     @Autowired
     private pautaservice pautaService;
-
-    Pautacontroller(ControleFrequenciaApplication controleFrequenciaApplication) {
-        this.controleFrequenciaApplication = controleFrequenciaApplication;
-    }
 
     @GetMapping
     public Long contarpautas() {
         return pautaService.contarPautas();
     }
 
-    @GetMapping
-    public pauta buscar() {
-        return pautaService.buscarpauta(id);
+    @GetMapping("/buscar-pauta/{id}")
+    public pauta buscarPauta(@PathVariable Integer id) {
+        return pautaService.buscarPauta(id);
     }
 
     @GetMapping("/listar-pautas")
@@ -42,25 +38,26 @@ public class Pautacontroller {
     }
 
     @DeleteMapping("/deletarpauta/{id}")
-    public String deletarPauta(PathVariable Integer id){
-        if (pautaservice.deletarpauta(id)) {
+    public String deletarPauta(@PathVariable Integer id){
+        if (pautaService.deletarPauta(id)) {
             return "pauta excluida com sucesso";
         }
         return "falha na exclusão da pauta";
     }
     @PostMapping ("/salvar-pauta ")
-    public pauta cadastrarpauta (@RequestBody pauta pauta); {
-        return pautaservice.cadastrarpauta();
+    public pauta cadastrarpauta (@RequestBody pauta pauta) {
+        return pautaService.caastrarPauta(pauta);
 
     }
 
-    @PutMapping
-     public String atualizarpauta("/atualizar-pauta/{id}"){
-        @PathVariable integer id,
-        @RequestBody pauta Pauta
-if (pautaService.atualizarPauta(id, pauta != null))
+    @PutMapping("/atualizar-pauta/{id}")
+     public String atualizarpauta(
+        @PathVariable Integer id,
+        @RequestBody pauta pauta){
+if (pautaService.atualizarPauta(id, pauta) != null){
     return ("pauta atualizada com sucesso");
      }
      return "falha na atualizaçã da pauta";
+    }
 }
 

@@ -6,8 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Column;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 
@@ -17,7 +17,7 @@ import jakarta.persistence.GeneratedValue;
 public class pauta {
 
 
-    
+    @Id
     @GeneratedValue ( strategy = GenerationType. IDENTITY)
     @Column (name =  "id") 
     private Integer id;
@@ -27,13 +27,13 @@ public class pauta {
 
     @OneToMany
     @JoinColumn (name  = "id_pauta")
-    private List<Usuario> usuario;
+    private List<usuario> usuario;
 
 
     public pauta() {
     }
 
-    public pauta(Integer id, String turma, List<com.senai.backend.controle_frequencia.models.Usuario> usuario) {
+    public pauta(Integer id, String turma, List<usuario> usuario) {
         this.id = id;
         this.turma = turma;
         this.usuario = usuario;
@@ -55,11 +55,11 @@ public class pauta {
         this.turma = turma;
     }
 
-    public List<Usuario> getUsuario() {
+    public List<usuario> getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(List<Usuario> usuario) {
+    public void setUsuario(List<usuario> usuario) {
         this.usuario = usuario;
     }
     

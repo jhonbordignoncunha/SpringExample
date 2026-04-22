@@ -3,8 +3,8 @@ package com.senai.backend.controle_frequencia.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.senai.backend.controle_frequencia.models.Usuario;
-import com.senai.backend.controle_frequencia.repositories.Usuariorepositories;
+import com.senai.backend.controle_frequencia.models.usuario;
+import com.senai.backend.controle_frequencia.Repositories.*;
 
 @Service
 public class usuarioservice {
@@ -16,11 +16,11 @@ public class usuarioservice {
         return usuariorepositories.count();
     }
 
-    public Usuario buscarUsuario(Integer id) {
+    public usuario buscarUsuario(Integer id) {
         return usuariorepositories.findById(id).get();
     }
 
-    public List<Usuario> ListarUsuario() {
+    public List<usuario> ListarUsuario() {
         return usuariorepositories.findAll();
 
     }
@@ -35,23 +35,21 @@ public class usuarioservice {
 
 
 }
-public Usuario cadastrarusuario(Usuario usuario){
+public usuario cadastrarusuario(usuario usuario){
      return usuariorepositories.save(usuario);
 
-
-
 }
-    public Usuario atualizarusuario (Integer id, Usuario usuario)
+    public usuario atualizarusuario (Integer id, usuario usuario){
 
-        Usuario usuariorecuperado =  buscarUsuario(id);
-        if(usuariorecuperado != null)
+        usuario usuariorecuperado =  buscarUsuario(id);
+        if(usuariorecuperado != null){
             usuariorecuperado.setId(id);
 
 
-        if (usuario.getNome() != null)
+        if (usuario.getNome() != null){
             usuariorecuperado.setNome(usuario.getNome());
 
-        
+        }
         if(usuario.getDataNascimento() != null){
             usuariorecuperado.setDataNascimento 
             (usuario.getDataNascimento());
@@ -59,5 +57,7 @@ public Usuario cadastrarusuario(Usuario usuario){
 
         }
         return usuariorepositories.save(usuariorecuperado);
+    }
         return null;
+}
 }

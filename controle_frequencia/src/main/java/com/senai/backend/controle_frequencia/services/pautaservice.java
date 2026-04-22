@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senai.backend.controle_frequencia.Repositories.Pautarepositories;
 import com.senai.backend.controle_frequencia.models.pauta;
-import com.senai.backend.controle_frequencia.repositories.Pautarepositories;
 
 @Service
 public class pautaservice {
@@ -44,12 +44,20 @@ public class pautaservice {
 
     public pauta atualizarPauta(Integer id, pauta pauta) {
         pauta pautarecuperada = buscarPauta (id);
-        if (pautarecuperada != null)
-            pautarecuperada.setId(id);
-            if (pauta.getTurma() != null) 
-            pautarecuperada.setTurma(pauta.getTurma())
-        }return pautaRepositories.sav(pautaRecuperada);
+        if (pautarecuperada != null){
 
-}return null;
+            pautarecuperada.setId(id);
+     
+            if (pauta.getTurma() != null){
+
+                pautarecuperada.setTurma(pauta.getTurma());
+            } 
+            return pautaRepositories.save(pautarecuperada);
+        }
+    return null;
+    }
+}
+    
+
 
 

@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table( name  = "usuario")
-public class Usuario {
+public class usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,13 +27,13 @@ public class Usuario {
 
 
     //construtor padrao
-    public Usuario() {
+    public usuario() {
     }
 
 
     
     // construtor paremetros
-    public Usuario(Integer id, String nome, LocalDate dataNascimento) {
+    public usuario(Integer id, String nome, LocalDate dataNascimento) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
